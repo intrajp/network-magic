@@ -1,0 +1,11 @@
+1. dhclient-multiple.py
+1. dhcp-discover-request-inform.py
+
+Version-1.1 (4/2/17)
+   incorporated dhcp-discover-request-inform.py
+Version-1.0 (1/22/16)
+   fixed some variables
+   fixed debug functionality
+Version-none (1/5/16)
+   incorporated dhclient-multiple.py
+   initial version
