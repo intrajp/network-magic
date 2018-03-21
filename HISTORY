@@ -1,6 +1,8 @@
 1. dhclient-multiple.py
 1. dhcp-discover-request-inform.py
 
+Version-1.2 (3/21/17)
+   incorporated dhcp-mac-limitter
 Version-1.1 (4/2/17)
    incorporated dhcp-discover-request-inform.py
 Version-1.0 (1/22/16)

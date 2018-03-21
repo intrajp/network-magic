@@ -12,4 +12,9 @@ Please use this in test environment.
 Useful tool to test DHCP server.
 Please read the comments in the file.
 
+## 3.dhcp-mac-limitter
+Tool to block mac address repeatedly DHCPDISCOVER-ing in short time.
+Please read dhcp-mac-limitter/README.
+
+
 ... more to come, hopefully.

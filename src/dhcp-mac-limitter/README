@@ -1,0 +1,26 @@
+How these programs work
+
+Please configure these.
+
+1. $ touch /tmp/dhcp-mac-limit
+2. # chown dhcpd:dhcpd /tmp/dhcp-mac-limit
+3. # chcon unconfined_u:object_r:dhcp_etc_t:s0 /tmp/dhcp-mac-limit
+4. $ touch /tmp/dhcp-discover.log
+5. # chown dhcpd:dhcpd /tmp/dhcp-discover.log
+6. # chcon unconfined_u:object_r:dhcpd_tmp_t:s0 /tmp/dhcp-discover.log
+7. # ls -lZ /tmp/dhcp-*
+8. Copy and past 'dhcpd.conf.hook_dhcpdiscover' to 'dhcpd.conf' in proper fashion.
+9. # cp record-dhcpdiscover-mac.sh /usr/local/bin
+10. # chown dhcpd:dhcpd /usr/local/bin/record-dhcpdiscover-mac.sh
+11. # cp dhcpdiscover-mac-limitter.sh /usr/local/bin
+12. # chown root:root /usr/local/bin/dhcpdiscover-mac-limitter.sh
+14. cd to 'inotify_dhcp_discover' and type 'make'.
+15. Check binary file 'inotify_dhcp_discover' was created.
+16. start dhcpd service
+17. execute inotify_dhcp_discover like ./inotify_dhcp_discover (&)
+18. If you are curious, open terminal and watch if /tmp/dhcp-mac-limit, /tmp/dhcp-discover.log or /var/log/messages
+19. Now, request many DHCPDISCOVER (you can use dhclient-multiple.py with setting same mac address) and if it works fine, 
+certain mac address will be ignored unless you delete lines in /tmp/dhcp-mac-limit.
+20. inotify_dhcp_discover exits after properly does its job, so please execute again if needed.
+
+Enjoy!

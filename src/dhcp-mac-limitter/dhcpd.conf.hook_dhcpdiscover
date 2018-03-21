@@ -1,0 +1,26 @@
+## hints
+#https://lists.isc.org/pipermail/dhcp-users/2008-September/007167.html
+#https://mperedim.wordpress.com/2011/02/17/opennebula-dhcpd-contextualization-magic/
+#https://linuxjm.osdn.jp/html/dhcp/man5/dhcp-eval.5.html
+## capture DHCPDISCOVER
+if ( option dhcp-message-type = 1 ) {
+    #log (info, "## message-type 1");
+    on commit {
+        #log(info, "######## GOT DHCPDISCOVER PACKET !!");
+        set ClientMac = binary-to-ascii (16, 8, ":", substring (hardware, 1, 6));
+        set clip = binary-to-ascii (10, 8, ".", leased-address);
+        set clhw = concat (
+            suffix (concat ("0", binary-to-ascii (16, 8, "", substring(hardware,1,1))),2), ":",
+            suffix (concat ("0", binary-to-ascii (16, 8, "", substring(hardware,2,1))),2), ":",
+            suffix (concat ("0", binary-to-ascii (16, 8, "", substring(hardware,3,1))),2), ":",
+            suffix (concat ("0", binary-to-ascii (16, 8, "", substring(hardware,4,1))),2), ":",
+            suffix (concat ("0", binary-to-ascii (16, 8, "", substring(hardware,5,1))),2), ":",
+            suffix (concat ("0", binary-to-ascii (16, 8, "", substring(hardware,6,1))),2)
+        );
+        #log(info, concat("Got from Mac:", ClientMac));
+        #log(info, concat("Got from MAC:", Clhw));
+        execute("/usr/local/bin/record-dhcpdiscover-mac.sh", Clhw);
+    }
+}
+include "/tmp/dhcp-mac-limit";
+
