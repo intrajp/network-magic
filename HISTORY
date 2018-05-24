@@ -1,7 +1,10 @@
 1. dhclient-multiple.py
 2. dhcp-discover-request-inform.py
 3. dhcp-mac-limitter
+4. CVE-2017-18017_checker.sh
 
+Version-1.3 (5/25/18)
+   incorporated CVE-2017-18017_checker.sh 
 Version-1.2 (3/21/17)
    incorporated dhcp-mac-limitter
 Version-1.1 (4/2/17)
