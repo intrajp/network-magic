@@ -20,4 +20,8 @@ Please read dhcp-mac-limitter/README.
 Check CVE-2017-1807 vulnerability check.
 
 
+## Copyright (C) 2018 Shintaro Fujiwara 
+
+shintaro.fujiwara [at] gmail [dot] com
+
 ... more to come, hopefully.
